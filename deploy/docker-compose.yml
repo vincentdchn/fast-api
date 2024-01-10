@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+      target: prod
+    image: pm_api:${PM_API_VERSION:-latest}
+    restart: always
+    env_file:
+    - .env
+    environment:
+      PM_API_HOST: 0.0.0.0
